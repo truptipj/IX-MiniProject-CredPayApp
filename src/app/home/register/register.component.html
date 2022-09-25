@@ -1,0 +1,61 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="fullName">
+                Full Name
+              </label>
+              <input type="text" maxlength="50" class="form-control" formControlName="fullName" id="fullName" />
+              <small *ngIf="registerForm.controls['fullName'].touched
+                            && registerForm.controls['fullName'].hasError('required')" class="text-danger">Full Name Is
+                Required</small>
+              <small *ngIf="registerForm.controls['fullName'].hasError('pattern')" class="text-danger">Please Enter
+                Valid Full Name</small>
+            </div>
+            <div class="form-group">
+              <label for="email">
+                Email
+              </label>
+              <input type="text" class="form-control" formControlName="email" id="email" />
+              <small *ngIf="registerForm.controls['email'].touched
+                              && registerForm.controls['email'].hasError('required')" class="text-danger">Email Is
+                Required</small>
+            </div>
+            <div class="form-group">
+              <label for="userName">
+                User Name
+              </label>
+              <input type="text" class="form-control" formControlName="userName" id="userName" />
+              <small *ngIf="registerForm.controls['userName'].touched
+                                  && registerForm.controls['userName'].hasError('required')" class="text-danger"> User
+                Name is Required</small>
+            </div>
+            <div class="form-group">
+              <label for="password">
+                Password
+              </label>
+              <input type="text" class="form-control" formControlName="password" id="Password" />
+              <small *ngIf="registerForm.controls['password'].touched
+                                      && registerForm.controls['password'].hasError('required')"
+                class="text-danger">Password is Required</small>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" (click)="openLogin()" class="btn btn-secondary">Back To Login</button>
+            <button type="submit" [disabled]="!registerForm.valid" class="btn btn-primary">
+              Register
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

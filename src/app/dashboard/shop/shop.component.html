@@ -1,0 +1,26 @@
+<div class="container-fluid mt-4">
+  <div class="row mb-3 mt-2">
+    <div class="col-md-4">
+      <form [formGroup]="categoryForm">
+        <select formControlName="category" (change)="changeType()" class="form-control dropdown">
+          <option>Select Category</option>
+          <option *ngFor="let category of shopCategoryList">
+            {{ category }}
+          </option>
+        </select>
+      </form>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div *ngFor="let item of shopList" class="col-md-4">
+      <div class="card mt-2">
+        <img [src]="item.imageUrl" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{item.name}}</h5>
+          <p class="card-text">{{item.price}}</p>
+          <a href="#" routerLink="/user/paynow" (click)="payNow(item)" class="btn btn-primary">Pay Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

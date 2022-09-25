@@ -1,0 +1,148 @@
+.wrapper {
+  box-shadow: 3px 3px 5px #1b1b1ba2;
+}
+
+p {
+  margin: 0px;
+}
+
+.h8 {
+  font-size: 25px;
+  font-weight: 600;
+  color: white;
+}
+
+.card .atm {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+}
+
+.card .sbi {
+  width: 50px;
+  height: 20px;
+  object-fit: fill;
+}
+
+.card .kotak {
+  width: 50px;
+  height: 20px;
+  object-fit: fill;
+}
+
+.card .icici {
+  width: 50px;
+  height: 50px;
+  object-fit: fill;
+}
+
+.debit-card {
+  flex-basis: 33%;
+  padding: 20px;
+  margin-top: 51px;
+  background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  position: relative;
+  border-radius: 15px;
+  box-shadow: 3px 3px 5px #0000001a;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+}
+
+.debit-card:hover {
+  box-shadow: 5px 3px 5px #000000a2;
+}
+
+.blank-div {
+  flex-basis: 32%;
+}
+
+.card-2 {
+  background-color: #21D4FD;
+  background-image: linear-gradient(116deg, #21D4FD 0%, #B721FF 100%);
+}
+
+.text-muted {
+  font-size: 0.8rem;
+}
+
+.text-white {
+  font-size: 14px;
+}
+
+.contaier {
+  margin-top: 15px;
+}
+
+p.no_cards {
+  color: white;
+}
+
+button.btn.btn-success {
+  margin-top: 50px;
+  width: 80px;
+  font-size: small;
+}
+
+button.btn.btn-danger {
+  margin-top: 50px;
+  width: 80px;
+  font-size: small;
+}
+
+button.btn.btn-info {
+  margin-top: 50px;
+  width: 84px;
+  font-size: small;
+}
+
+.a-btn-slide-text {
+  width: 123px;
+  margin-top: 27px;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.input-group {
+  margin-left: -32px;
+}
+
+/* search */
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: rgb(170, 170, 170);
+}
+
+/* button.btn.btn-info {
+  height: 39px;
+  margin-top: 13px;
+  width: 36px;
+} */
+
+input.form-control {
+  margin-top: 13px;
+  margin-left: 50px;
+}
+
+button.btn.btn-demo {
+  width: 93px;
+  margin-left: 317px;
+  margin-top: -50px;
+}
+
+.contaier {
+  padding: 230px 70px 50px;
+}

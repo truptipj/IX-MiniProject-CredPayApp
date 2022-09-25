@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="text-center">
+          <h1>LOGIN</h1>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="logIn()">
+          <div class="mb-3">
+            <label for="userName" class="form-label">UserName</label>
+            <input type="text" formControlName="userName" placeholder="Enter User Name" class="form-control"
+              id="userName">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" formControlName="password" placeholder="Enter Correct Password" class="form-control"
+              id="password">
+          </div>
+          <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">LogIn</button>
+        </form>
+        <a style="color: blue; margin-top:10px;" [routerLink]="['/routePath']" routerLinkActive="router-link-active">New
+          User ? Click to Register!</a>
+      </div>
+    </div>
+  </div>
+</div>

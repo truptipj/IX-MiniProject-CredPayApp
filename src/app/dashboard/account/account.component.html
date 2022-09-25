@@ -1,0 +1,104 @@
+<div class="container-fluid mt-5 mb-5 p-0">
+  <div class="inner row d-flex justify-content-center">
+    <div class="card col-md-5 col-12 box1">
+      <div class="card-content">
+        <div class="card-header">Add Your Credit Card</div>
+        <div class="card-body">
+          <p><small>Payment with a credit card.</small></p>
+          <div class="credit d-block mt-45 mb-45 mx-auto">
+            <img class="frnt" src="https://i.imgur.com/Lj98lDm.png" width="200px" />
+            <img class="back" src="https://i.imgur.com/HrUwtFC.png" width="200px" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card col-md-5 col-12 box2">
+      <div class="card-content">
+        <div class="card-header box2-head">
+          <div class="heading2">{{title}} Credit Card Account</div>
+        </div>
+        <div class="card-body col-10 offset-1">
+          <form [formGroup]="addCardsForm">
+            <div class="mb-3">
+              <label for="exampleInputCardNumber" class="form-label">Card Number</label>
+              <input type="text" formControlName="cardNumber" minlength="16" maxlength="16"
+                placeholder="Enter Correct Card Number" class="form-control" id="exampleInputCardNumber"
+                [readonly]="isUpdate" (keyup)="uniqueCardNumber()" />
+              <p class="text-danger" *ngIf="isDuplicateCardNo"><small>Card Number Already Exist</small></p>
+              <small *ngIf="
+                  addCardsControl.cardNumber.touched &&
+                  addCardsControl.cardNumber.errors?.required
+                " class="text-danger">Card Number Is Required</small>
+              <small *ngIf="addCardsControl.cardNumber.errors?.pattern" class="text-danger">Enter Valid Card Number
+              </small>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputCardOwnerName" class="form-label">Card Owner Name</label>
+              <input type="text" formControlName="cardOwnerName" placeholder="Enter Correct Card Owner Name"
+                class="form-control" id="exampleInputCardOwnerName" />
+              <small *ngIf="
+                  addCardsControl.cardOwnerName.touched &&
+                  addCardsControl.cardOwnerName.errors?.required
+                " class="text-danger">Card Owner Name Is Required</small>
+              <small *ngIf="addCardsControl.cardOwnerName.errors?.pattern" class="text-danger"> Enter Valid Card Owner
+                Name
+              </small>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputExpirationDate" class="form-label">Expiration Date</label>
+              <input type="date" [min]="getToday()" formControlName="expirationDate"
+                placeholder="Enter Correct Expiration Date" class="form-control" id="exampleInputExpirationDate" />
+              <small *ngIf="
+                  addCardsControl.expirationDate.touched &&
+                  addCardsControl.expirationDate.errors?.required
+                " class="text-danger">Expiration Date Is Required</small>
+              <small *ngIf="addCardsControl.expirationDate.errors?.pattern" class="text-danger">Enter Valid Expiration
+                Date
+              </small>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputCvv" class="form-label">CVV</label>
+              <input type="number" formControlName="cvv" placeholder="Enter Correct CVV" minlength="3" maxlength="3"
+                class="form-control" id="exampleInputCvv" [readonly]="isUpdate" />
+              <small *ngIf="
+                  addCardsControl.cvv.touched &&
+                  addCardsControl.cvv.errors?.required
+                " class="text-danger">CVV Is Required</small>
+              <small *ngIf="addCardsControl.cvv.errors?.pattern" class="text-danger">Enter Valid CVV</small>
+            </div>
+            <div class="mb-3">
+              <select *ngIf="!isUpdate" formControlName="bank" class="form-control dropdown">
+                <option>Select Bank</option>
+                <option *ngFor="let bank of bankList">
+                  {{ bank }}
+                </option>
+              </select>
+              <p *ngIf="isUpdate"> Bank - <span
+                  *ngIf="editCreditCard && editCreditCard.bank">{{editCreditCard.bank}}</span></p>
+              <small *ngIf="
+                  addCardsControl.bank.touched &&
+                  addCardsControl.bank.errors?.required
+                " class="text-danger">Bank Is Required</small>
+              <small *ngIf="addCardsControl.bank.errors?.pattern" class="text-danger">enter valid Bank</small>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputBalance" class="form-label">Balance</label>
+              <input type="number" formControlName="balance" placeholder="Enter Correct Balance" class="form-control"
+                id="exampleInputBalance" />
+              <small *ngIf="
+                  addCardsControl.balance.touched &&
+                  addCardsControl.balance.errors?.required
+                " class="text-danger">Balance Is Required</small>
+              <small *ngIf="addCardsControl.balance.errors?.pattern" class="text-danger">Enter Valid Balance</small>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-primary addCard col-md-3" [disabled]="!addCardsForm.valid" (click)="addUpdateCard()">
+            {{title}} Card
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

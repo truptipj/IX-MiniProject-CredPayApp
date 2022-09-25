@@ -1,0 +1,17 @@
+.card.col-md-5.col-12.box2 {
+  margin: 5px;
+}
+
+.card.col-md-5.col-12.box1 {
+  margin: 5px;
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+  cursor: not-allowed;
+}
+
+.addCard {
+  margin-left: 255px;
+  margin-bottom: 7px;
+}

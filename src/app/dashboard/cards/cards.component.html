@@ -1,0 +1,112 @@
+<div class="container">
+  <div class="wrapper">
+    <div class="card px-4">
+      <div class="row">
+        <div class="col-3 mt-3">
+          <button class="btn btn-primary" routerLink="/user/account" type="button">Add-Card</button>
+        </div>
+        <div class="col-9">
+          <div class="input-group">
+            <input [(ngModel)]="filterTerm" type="text" class="form-control" placeholder="Search Card Here">
+          </div>
+        </div>
+      </div>
+      <div class="card_wrapper d-flex flex-wrap mb-2 justify-content-between ">
+        <div class="debit-card  mb-3"
+          *ngFor="let card of allCards | filter:filterTerm | paginate: { itemsPerPage: 5, currentPage: p }">
+          <div>
+            <label>
+              <div>
+                <div>
+                  <div class="col-md-4">
+                    <img *ngIf="card.bank === 'SBI'" src="https://www.freepnglogos.com/uploads/visa-inc-logo-png-11.png"
+                      class="sbi" alt="" />
+                  </div>
+                  <div class="col-md-4">
+                    <img *ngIf="card.bank === 'AXIS'"
+                      src="https://www.freepnglogos.com/uploads/mastercard-png/mastercard-logo-png-transparent-svg-vector-bie-supply-0.png"
+                      alt="master" class="kotak" />
+                  </div>
+                  <div class="col-md-4">
+                    <img *ngIf="card.bank === 'KOTAK'"
+                      src="https://www.freepnglogos.com/uploads/mastercard-png/mastercard-logo-png-transparent-svg-vector-bie-supply-0.png"
+                      alt="master" class="icici" />
+                  </div>
+                  <p>{{ card.bank }}</p>
+                  <p class="mt-2 mb-4 text-white fw-bold">
+                    {{ card.cardOwnerName }}
+                  </p>
+                </div>
+              </div>
+            </label>
+            <div class="mt-auto fw-bold d-flex align-items-center justify-content-between">
+              <p>{{ card.cardNumber | maskCard }}</p>
+              <p>{{ card.expirationDate | date: "dd/MM/YYYY" }}</p>
+              <p>{{ card.cvv | maskCard}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <button class="btn btn-success" (click)="editCard(card)" routerLink="/user/account"
+                type="button">Edit</button>
+            </div> &nbsp;
+            <div class="col">
+              <button class="btn btn-danger" (click)="deleteCard(card)" type="button">Delete</button>
+            </div>
+            <div class="col">
+              <button class="btn btn-info" (click)="viewCardDetails(card)" data-toggle="modal" data-target="#viewModal"
+                type="button">View Card</button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="allCards.length === 0">
+          No
+        </div>
+        <div class="blank-div"></div>
+        <div class="blank-div"></div>
+      </div>
+    </div>
+  </div> <br> <br> <br>
+</div>
+<div>
+  <div class="pagination" *ngIf="allCards.length > 0">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+<!-- Modal -->
+<div *ngIf="selectedViewCard" class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Card Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered table-striped">
+          <tr>
+            <td class="width"><b>Card Number</b></td>
+            <td>{{selectedViewCard.cardNumber}}</td>
+          </tr>
+          <tr>
+            <td class="width"><b>CVV</b></td>
+            <td>{{selectedViewCard.cvv}}</td>
+          </tr>
+          <tr>
+            <td class="width"><b>Bank</b></td>
+            <td>{{selectedViewCard.bank}}</td>
+          </tr>
+          <tr>
+            <td class="width"><b>Balance</b></td>
+            <td>{{selectedViewCard.balance}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

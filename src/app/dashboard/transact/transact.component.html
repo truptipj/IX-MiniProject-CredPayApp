@@ -1,0 +1,51 @@
+<div class="container mt-5 mb-5">
+  <div class="row m-0">
+    <div class="col-md-12">
+      <div class="input-group col-md-3 mb-2">
+        <input [(ngModel)]="filterTerm" type="text" class="form-control" placeholder="Search Transaction Here">
+        <div class="input-group-append">
+          <i class="fa fa-search"></i>
+        </div>
+      </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">ProductName</th>
+            <th scope="col">Category</th>
+            <th scope="col">AmountPaid</th>
+            <th scope="col">MinDue</th>
+            <th scope="col">Price</th>
+            <th scope="col">CardNumber</th>
+            <th scope="col">Balance</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody
+          *ngFor='let item of transactions | filter:filterTerm | paginate: { itemsPerPage: 10, currentPage: p };  let i = index;'>
+          <tr>
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{item.productName}}</td>
+            <td>{{item.category}}</td>
+            <td>{{item.amountPaid}}</td>
+            <td>{{item.minDue}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.cardNumber}}</td>
+            <td>{{item.balance}}</td>
+            <td>{{item.status}}</td>
+            <td>
+              <button type="button" class="btn btn-info p-1" routerLink="/user/paymentDetails"
+                (click)="view(item, false)">View-Payment-Details</button> &nbsp;
+              <button *ngIf="item.minDue" type="button" class="btn btn-info p-1"
+                (click)="view(item, true)">Pay-Bills</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="transactions.length > 0">
+        <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+.card {
+  width: 550px;
+  padding: 30px;
+  margin-top: 2%;
+  margin-left: 50%;
+  border: 1px solid rgb(129, 119, 119);
+  box-shadow: 0 0 10px 0 rgba(100, 100, 100, 0.26);
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+  cursor: not-allowed;
+}
